@@ -8,12 +8,10 @@ import { addPhoto, updatePhoto } from 'features/Photo/photoSlice';
 import { useHistory, useParams } from 'react-router-dom';
 import { randomNumber } from 'utils/common';
 
-AddEditPage.propTypes = {
-}
+
 
 
 function AddEditPage(props) {
-
     const dispatch = useDispatch()
     const history = useHistory()
     const {photoId} = useParams()
@@ -33,8 +31,7 @@ function AddEditPage(props) {
     : editedPhoto;
     const handleSubmit = (values) => {
       return new Promise(resolve => {
-        console.log('Form submit: ', values);
-  
+        console.log('Form submit: ', values);  
         setTimeout(() => {
           if (isAddMode) {
             const newPhoto = {
@@ -49,7 +46,6 @@ function AddEditPage(props) {
             const action = updatePhoto(values);
             dispatch(action);
           }
-  
           history.push('/photos');
           resolve(true);
         }, 2000);
